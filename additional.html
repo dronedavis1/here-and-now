@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Additional — Here and Now</title>
+  <meta name="description" content="More from Fran Chandler — practice videos, her Insight Timer meditations, and the Here and Now newsletter." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,400;1,9..144,600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Here and Now</a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="journal.html">The Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="additional.html" aria-current="page">Additional</a></li>
+        </ul>
+        <!-- TODO: replace with real Amazon product URL -->
+        <a href="https://www.amazon.com/dp/PLACEHOLDER-ASIN" class="btn btn-accent nav-cta" target="_blank" rel="noopener noreferrer">Get the Journal</a>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PAGE HEADER ============ -->
+    <div class="container page-header">
+      <p class="eyebrow">Additional</p>
+      <h1>More from Fran</h1>
+      <p class="section-lede">The journal is where Here and Now starts, not where it ends. This is the growing space for everything alongside it — practice videos, guided meditations, and the occasional note in your inbox.</p>
+    </div>
+
+    <!-- ============ OFFERINGS ============
+    TODO: build these out for real once each offering is live — video platform
+    not yet chosen, Insight Timer profile link is a placeholder, and the
+    newsletter still needs a real email platform connected (see footer form). -->
+    <section class="section reveal">
+      <div class="container offer-grid">
+
+        <article class="offer-card">
+          <!-- FILLER PHOTO from Pexels — swap once Fran's first practice video is filmed -->
+          <div class="photo-frame small">
+            <img class="photo" src="https://images.pexels.com/photos/6634978/pexels-photo-6634978.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;h=600&amp;dpr=1" alt="A woman seated on a yoga mat, standing in for Fran's upcoming practice videos" loading="lazy" width="800" height="600" />
+          </div>
+          <p class="offer-status">Coming soon</p>
+          <h3>Videos</h3>
+          <p>Short practice videos — a few gentle minutes of movement or breath you can do without unrolling the whole journal. Fran's building this library out now.</p>
+        </article>
+
+        <article class="offer-card">
+          <!-- FILLER PHOTO from Pexels — swap for real Insight Timer branding/imagery once linked -->
+          <div class="photo-frame small">
+            <img class="photo" src="https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;h=600&amp;dpr=1" alt="A person meditating in lotus pose surrounded by candles" loading="lazy" width="800" height="600" />
+          </div>
+          <h3>Insight Timer</h3>
+          <p>Fran also teaches guided meditations on Insight Timer, for whenever you want the audio without the page.</p>
+          <!-- TODO: replace with Fran's real Insight Timer profile URL -->
+          <a href="https://insighttimer.com/PLACEHOLDER-PROFILE" class="read-more" target="_blank" rel="noopener noreferrer">Find her on Insight Timer</a>
+        </article>
+
+        <article class="offer-card">
+          <!-- FILLER PHOTO from Pexels — evokes a quiet, unhurried read -->
+          <div class="photo-frame small">
+            <img class="photo" src="https://images.pexels.com/photos/4346281/pexels-photo-4346281.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;h=600&amp;dpr=1" alt="A book and a cup of tea in a cozy room" loading="lazy" width="800" height="600" />
+          </div>
+          <h3>Newsletter</h3>
+          <p>If and when Fran sends a newsletter, it'll land here first — a short note, a monthly reflection, nothing more than that.</p>
+          <!-- TODO: connect this form to actual email platform once chosen (Mailchimp/ConvertKit/etc. — platform not yet decided) -->
+          <form class="newsletter-form" data-newsletter-form>
+            <label for="newsletter-email-offer" class="visually-hidden">Email address</label>
+            <input type="email" id="newsletter-email-offer" name="email" placeholder="you@example.com" required autocomplete="email" />
+            <button type="submit" class="btn btn-accent">Sign up</button>
+          </form>
+          <p class="newsletter-status" data-newsletter-status aria-live="polite"></p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Here and Now</a>
+        <p class="footer-tagline">A guided journal, and a growing home for slow, deliberate wellness — from Fran Chandler.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <p class="footer-label">Explore</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="journal.html">The Journal</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="additional.html">Additional</a></li>
+        </ul>
+      </nav>
+      <div class="footer-more">
+        <p class="footer-label">More from Fran</p>
+        <ul>
+          <!-- TODO: link to real video platform once chosen -->
+          <li><a href="additional.html">Videos <span class="coming-soon">— coming soon</span></a></li>
+          <!-- TODO: link to Fran's real Insight Timer profile once live -->
+          <li><a href="additional.html">Insight Timer <span class="coming-soon">— coming soon</span></a></li>
+          <li><a href="additional.html">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-connect">
+        <p class="footer-label">Stay connected</p>
+        <form class="newsletter-form" data-newsletter-form>
+          <label for="newsletter-email-footer" class="visually-hidden">Email address</label>
+          <input type="email" id="newsletter-email-footer" name="email" placeholder="you@example.com" required autocomplete="email" />
+          <button type="submit" class="btn btn-accent">Sign up</button>
+        </form>
+        <p class="newsletter-status" data-newsletter-status aria-live="polite"></p>
+        <a class="footer-social" href="https://instagram.com/here.and.now.brand" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span data-current-year>2026</span> Here and Now. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

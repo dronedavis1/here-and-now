@@ -266,21 +266,37 @@ p {
   width: 100%;
 }
 
-.img-placeholder.sage {
-  background: linear-gradient(155deg, var(--color-cream-alt) 0%, #dbe1d1 50%, #c7d1b7 100%);
-}
-
-.img-placeholder.tall {
+.img-placeholder.tall,
+.photo-frame.tall {
   min-height: 420px;
 }
 
-.img-placeholder.square {
+.img-placeholder.square,
+.photo-frame.square {
   aspect-ratio: 1 / 1;
   min-height: 0;
 }
 
-.img-placeholder.small {
+.img-placeholder.small,
+.photo-frame.small {
   min-height: 180px;
+}
+
+/* === PHOTOS (Pexels filler imagery) ===
+   Real filler photography until final brand photography/AI assets are
+   ready. Swap the <img> src on each in place when real assets arrive. */
+.photo-frame {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* === HEADER / NAV === */
@@ -409,14 +425,7 @@ p {
   color: var(--color-text-soft);
 }
 
-/* === FEATURED PRODUCT === */
-.product-feature {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  align-items: center;
-}
-
+/* === PRICE / RATING (shared) === */
 .product-price {
   font-family: var(--font-ui);
   font-size: 1.6rem;
@@ -474,6 +483,11 @@ p {
 .method-card p {
   color: var(--color-text-soft);
   margin-bottom: 0;
+}
+
+.method-grid .method-card:nth-child(7) {
+  margin: 0 auto;
+  max-width: 20rem;
 }
 
 /* === TESTIMONIALS === */
@@ -577,11 +591,17 @@ p {
   max-width: 22rem;
 }
 
-.footer-nav ul {
+.footer-nav ul,
+.footer-more ul {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
   font-family: var(--font-ui);
+}
+
+.footer-more .coming-soon {
+  color: rgba(250, 246, 240, 0.45);
+  font-size: 0.8rem;
 }
 
 .footer-label {
@@ -724,32 +744,6 @@ p {
   margin-bottom: 0;
 }
 
-.specs-block {
-  background-color: var(--color-cream-alt);
-  border-radius: var(--radius-lg);
-  padding: var(--space-md) var(--space-lg);
-}
-
-.specs-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-sm);
-  font-family: var(--font-ui);
-}
-
-.specs-list dt {
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-soft);
-}
-
-.specs-list dd {
-  margin: 0.15rem 0 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
 .cta-band {
   text-align: center;
   background-color: var(--color-cream-alt);
@@ -806,23 +800,42 @@ p {
   color: var(--color-text-soft);
 }
 
-/* === NOTES PAGE === */
-.notes-grid {
+/* === ADDITIONAL PAGE === */
+.offer-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-lg);
 }
 
-.note-card .img-placeholder {
+.offer-card .photo-frame {
   margin-bottom: var(--space-sm);
 }
 
-.note-card h3 {
-  margin-bottom: 0.4rem;
+.offer-card h3 {
+  margin-bottom: 0.3rem;
 }
 
-.note-card p {
+.offer-card p {
   color: var(--color-text-soft);
+}
+
+.offer-status {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sage-dark);
+  background-color: var(--color-cream-alt);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  margin-bottom: var(--space-xs);
+}
+
+.offer-card .newsletter-form {
+  justify-content: flex-start;
+  margin-left: 0;
 }
 
 .read-more {
@@ -837,6 +850,10 @@ p {
 @media (min-width: 640px) {
   .method-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .method-grid .method-card:nth-child(7) {
+    grid-column: 1 / -1;
   }
 
   .testimonial-grid {
@@ -858,19 +875,18 @@ p {
   }
 
   .hero-grid,
-  .product-feature,
   .about-teaser,
   .journal-hero,
   .about-hero {
     grid-template-columns: 1fr 1fr;
   }
 
-  .product-feature .product-copy {
-    order: 2;
+  .footer-inner {
+    grid-template-columns: 1.1fr 0.6fr 0.7fr 0.9fr;
   }
 
-  .footer-inner {
-    grid-template-columns: 1.2fr 0.8fr 1fr;
+  .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -881,6 +897,12 @@ p {
 
   .chakra-detail-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chakra-detail-list .chakra-detail-card:nth-child(7) {
+    grid-column: 1 / -1;
+    max-width: 34rem;
+    margin: 0 auto;
   }
 }
 
