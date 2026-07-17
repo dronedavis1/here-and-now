@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://here-and-now.davischandler46.workers.dev/sitemap.xml
