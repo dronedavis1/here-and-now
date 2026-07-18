@@ -13,7 +13,7 @@ Plain HTML/CSS/JS. No framework, no build step, no npm dependencies. Deploys to 
 /additional.html Additional — Fran's videos, Insight Timer, and newsletter
 /css/style.css   Shared stylesheet — all colors/fonts as CSS custom properties
 /js/main.js      Shared vanilla JS — mobile nav, scroll-reveal, newsletter stub
-/images/         Placeholder asset folder (empty until real imagery is ready)
+/images/         Site assets; images/book/ holds real Here and Now product photography
 ```
 
 ## Brand system
