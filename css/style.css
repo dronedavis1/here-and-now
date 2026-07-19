@@ -206,6 +206,16 @@ p {
   text-align: center;
 }
 
+/* Centers a block-level element (or turns an inline one block) within a
+   left-aligned parent, without disturbing sibling elements' alignment. */
+.center-inline {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 /* === BUTTONS === */
 .btn {
   display: inline-flex;
@@ -476,6 +486,11 @@ p {
   font-weight: 600;
 }
 
+.method-card .method-month,
+.method-card h3 {
+  text-align: center;
+}
+
 .method-card h3 {
   margin: 0.3rem 0 0.6rem;
 }
@@ -490,26 +505,215 @@ p {
   max-width: 20rem;
 }
 
-/* === PHOTO MOSAIC (mixed vertical/horizontal gallery) === */
-.mosaic-grid {
+/* === CLOSER-LOOK GALLERY CARDS ===
+   Two interactive photo cards (outside / contents). Each auto-advances
+   every ~2s until hovered, focused, or expanded into the shared lightbox;
+   closing the lightbox hands the index back so the card resumes where the
+   visitor left off. See js/main.js for the behavior. */
+.gallery-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 150px;
-  grid-auto-flow: dense;
-  gap: var(--space-sm);
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
 }
 
-.mosaic-item {
-  min-height: 0;
+.gallery-card {
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gallery-card:hover,
+.gallery-card:focus-within {
+  transform: scale(1.035);
+  box-shadow: 0 20px 45px rgba(43, 36, 32, 0.18);
+  z-index: 2;
+}
+
+.gallery-card-viewport {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-cream-alt);
+  cursor: pointer;
+}
+
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.gallery-slide.is-active {
+  opacity: 1;
+}
+
+.gallery-slide-inner {
+  position: absolute;
+  inset: 0;
+}
+
+.gallery-slide-inner img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.mosaic-item.tall {
-  grid-row: span 2;
+.gallery-slide-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  height: 100%;
+  text-align: center;
+  padding: var(--space-md);
+  background: linear-gradient(155deg, var(--color-cream-alt) 0%, #ecd9c2 45%, #e7c9a3 100%);
+  color: var(--color-text-soft);
 }
 
-.mosaic-item.wide {
-  grid-column: span 2;
+.gallery-slide-placeholder p {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 253, 250, 0.85);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.gallery-card-viewport:hover .gallery-arrow,
+.gallery-arrow:focus-visible {
+  opacity: 1;
+}
+
+.gallery-arrow[hidden] {
+  display: none;
+}
+
+.gallery-arrow-prev {
+  left: 0.6rem;
+}
+
+.gallery-arrow-next {
+  right: 0.6rem;
+}
+
+.gallery-arrow:hover {
+  background-color: var(--color-white);
+}
+
+.gallery-card-title {
+  text-align: center;
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+
+/* === SHARED FULLSCREEN LIGHTBOX === */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(20, 16, 14, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-lightbox[hidden] {
+  display: none;
+}
+
+.gallery-lightbox-stage {
+  position: relative;
+  width: min(90vw, 900px);
+  height: min(85vh, 900px);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-text);
+}
+
+.gallery-lightbox-stage .gallery-slide-inner {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+}
+
+.gallery-lightbox-back {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(250, 246, 240, 0.92);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  z-index: 1;
+}
+
+.gallery-lightbox-back:hover {
+  background-color: var(--color-white);
+}
+
+.gallery-lightbox .gallery-arrow {
+  opacity: 1;
+  background-color: rgba(250, 246, 240, 0.85);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+/* === JOURNAL "+N MORE PHOTOS" BADGE === */
+.journal-gallery-more {
+  position: relative;
+}
+
+.gallery-more-btn {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  background-color: rgba(43, 36, 32, 0.78);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.gallery-more-btn:hover {
+  background-color: rgba(43, 36, 32, 0.94);
+  transform: translateY(-1px);
 }
 
 /* === TESTIMONIALS === */
@@ -523,6 +727,11 @@ p {
   background-color: var(--color-cream-alt);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
+  text-align: center;
+}
+
+.testimonial-card .stars {
+  display: block;
 }
 
 .testimonial-card blockquote {
@@ -886,9 +1095,8 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .mosaic-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 170px;
+  .gallery-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .philosophy-list {
