@@ -505,15 +505,23 @@ p {
   max-width: 20rem;
 }
 
-/* === CLOSER-LOOK GALLERY CARDS ===
-   Two interactive photo cards (outside / contents). Each auto-advances
-   every ~2s until hovered, focused, or expanded into the shared lightbox;
-   closing the lightbox hands the index back so the card resumes where the
-   visitor left off. See js/main.js for the behavior. */
+/* === CLOSER-LOOK GALLERY CARD ===
+   A single interactive photo card, auto-advancing every ~2s until
+   hovered, focused, or expanded into the shared lightbox; closing the
+   lightbox hands the index back so the card resumes where the visitor
+   left off. See js/main.js for the behavior. The "Preview Book" badge
+   overlaid on it (.gallery-more-btn) is a plain outbound link to the
+   Amazon sample reader — same treatment as the journal page's badge. */
 .gallery-cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-lg);
+}
+
+.gallery-cards-single {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery-card {
@@ -607,42 +615,6 @@ p {
   margin-bottom: 0;
   font-family: var(--font-ui);
   font-weight: 600;
-}
-
-/* === "PREVIEW BOOK" LINK CARD ===
-   Sits alongside the photo gallery card but is a plain outbound link to
-   the Amazon sample reader, not a photo slideshow. */
-.preview-book-card {
-  display: block;
-}
-
-.preview-book-viewport {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  text-align: center;
-  padding: var(--space-lg) var(--space-md);
-  background: linear-gradient(155deg, var(--color-cream-alt) 0%, #ecd9c2 45%, #e7c9a3 100%);
-}
-
-.preview-book-icon {
-  font-size: 2.4rem;
-  line-height: 1;
-}
-
-.preview-book-label {
-  font-family: var(--font-ui);
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-text);
-}
-
-.preview-book-sub {
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  color: var(--color-text-soft);
 }
 
 /* === SHARED FULLSCREEN LIGHTBOX === */
@@ -1115,6 +1087,10 @@ body.lightbox-open {
 
   .gallery-cards {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-cards-single {
+    grid-template-columns: 1fr;
   }
 
   .philosophy-list {

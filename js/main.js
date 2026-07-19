@@ -215,7 +215,7 @@
 
       if (viewport) {
         viewport.addEventListener("click", function (event) {
-          if (event.target.closest("[data-gallery-prev],[data-gallery-next]")) {
+          if (event.target.closest("[data-gallery-prev],[data-gallery-next],.gallery-more-btn")) {
             return;
           }
           stopAutoplay();
