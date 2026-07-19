@@ -66,15 +66,13 @@
     el.textContent = String(new Date().getFullYear());
   });
 
-  /* === PHOTO GALLERIES ("A closer look" cards + journal "+N more") ===
+  /* === PHOTO GALLERIES ("A closer look" cards) ===
      Each [data-gallery] card cycles its .gallery-slide children every
      ~2s. Hovering/focusing a card pauses the autoplay so a visitor who
      stops to look isn't fighting the timer. Clicking the photo (not an
      arrow) opens the shared fullscreen lightbox, which has no timer;
      closing it hands the current photo back to the card so autoplay
-     resumes from wherever the visitor left off. The journal page's
-     "+N more photos" button opens the same lightbox against a hidden,
-     static list of slides instead of a card. */
+     resumes from wherever the visitor left off. */
   (function () {
     var lightboxEl = document.querySelector("[data-gallery-lightbox]");
     if (!lightboxEl) {
@@ -243,22 +241,6 @@
 
       show(0);
       startAutoplay();
-    });
-
-    /* --- Standalone "+N more photos" trigger (journal page) --- */
-    document.querySelectorAll("[data-gallery-trigger]").forEach(function (trigger) {
-      var sourceId = trigger.getAttribute("data-gallery-trigger");
-      var source = document.querySelector('[data-gallery-source="' + sourceId + '"]');
-      if (!source) {
-        return;
-      }
-      var slides = Array.prototype.slice.call(source.querySelectorAll(".gallery-slide"));
-      if (!slides.length) {
-        return;
-      }
-      trigger.addEventListener("click", function () {
-        openLightbox(slides, 0, null);
-      });
     });
   })();
 

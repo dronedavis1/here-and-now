@@ -561,26 +561,6 @@ p {
   display: block;
 }
 
-.gallery-slide-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  height: 100%;
-  text-align: center;
-  padding: var(--space-md);
-  background: linear-gradient(155deg, var(--color-cream-alt) 0%, #ecd9c2 45%, #e7c9a3 100%);
-  color: var(--color-text-soft);
-}
-
-.gallery-slide-placeholder p {
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
-  margin: 0;
-}
-
 .gallery-arrow {
   position: absolute;
   top: 50%;
@@ -627,6 +607,42 @@ p {
   margin-bottom: 0;
   font-family: var(--font-ui);
   font-weight: 600;
+}
+
+/* === "PREVIEW BOOK" LINK CARD ===
+   Sits alongside the photo gallery card but is a plain outbound link to
+   the Amazon sample reader, not a photo slideshow. */
+.preview-book-card {
+  display: block;
+}
+
+.preview-book-viewport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  background: linear-gradient(155deg, var(--color-cream-alt) 0%, #ecd9c2 45%, #e7c9a3 100%);
+}
+
+.preview-book-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.preview-book-label {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.preview-book-sub {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
 }
 
 /* === SHARED FULLSCREEN LIGHTBOX === */
@@ -690,12 +706,14 @@ body.lightbox-open {
   overflow: hidden;
 }
 
-/* === JOURNAL "+N MORE PHOTOS" BADGE === */
+/* === JOURNAL "PREVIEW BOOK" BADGE === */
 .journal-gallery-more {
   position: relative;
 }
 
 .gallery-more-btn {
+  display: inline-flex;
+  align-items: center;
   position: absolute;
   bottom: 0.7rem;
   right: 0.7rem;
