@@ -10,7 +10,7 @@ Plain HTML/CSS/JS. No framework, no build step, no npm dependencies. Deploys to 
 /index.html      Home page
 /journal.html    The Journal — flagship product detail page
 /about.html      About Fran — bio, philosophy, pull quote
-/additional.html Additional — Fran's videos, Insight Timer, and newsletter
+/additional.html Additional — Fran's Insight Timer and newsletter
 /css/style.css   Shared stylesheet — all colors/fonts as CSS custom properties
 /js/main.js      Shared vanilla JS — mobile nav, scroll-reveal, newsletter stub
 /images/         Site assets; images/book/ holds real Here and Now product photography
